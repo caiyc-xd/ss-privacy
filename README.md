@@ -6,8 +6,10 @@
 
 | 页面 | 网址 | Connect 里填在哪 |
 |---|---|---|
+| 中文产品页 | `https://caiyc-xd.github.io/ss-privacy/product.html` | 中文区 **Marketing URL**（营销网址，可选） |
 | 中文支持页 | `https://caiyc-xd.github.io/ss-privacy/` | 中文区 **Support URL** |
 | 中文隐私政策 | `https://caiyc-xd.github.io/ss-privacy/privacy.html` | 中文区 **Privacy Policy URL** |
+| English product page | `https://caiyc-xd.github.io/ss-privacy/product-en.html` | English (U.S.) **Marketing URL**（可选） |
 | English support | `https://caiyc-xd.github.io/ss-privacy/support-en.html` | English (U.S.) **Support URL** |
 | English privacy policy | `https://caiyc-xd.github.io/ss-privacy/privacy-en.html` | English (U.S.) **Privacy Policy URL** |
 
@@ -28,7 +30,8 @@
 python3 Tools/Pages/build.py
 
 # 2) 拷到本仓库并推送到两个分支（main 存源码，gh-pages 才是当前发布分支）
-cp docs/privacy.html docs/privacy-en.html docs/index.html docs/support-en.html docs/style.css docs/.nojekyll <本仓库>/
+cp -R docs/product.html docs/product-en.html docs/privacy.html docs/privacy-en.html \
+      docs/index.html docs/support-en.html docs/style.css docs/.nojekyll docs/shots <本仓库>/
 cd <本仓库> && git add -A && git commit -m "更新隐私政策" && git push origin main
 git checkout gh-pages && git checkout main -- . && git commit -m "更新隐私政策" && git push origin gh-pages && git checkout main
 ```
@@ -38,4 +41,7 @@ git checkout gh-pages && git checkout main -- . && git commit -m "更新隐私�
 - 中英各 13 节：不收集数据的具体范围、系统权限、网络访问、乐谱与导出文件的处理、
   本机偏好设置、随包第三方内容与许可、无第三方 SDK / 广告 / 内购、儿童隐私、
   GDPR/CCPA 口径的你的权利、数据保留与跨境传输、政策变更、联系方式与回复时限。
-- 页面自包含：`style.css`（深色模式自适应）+ `.nojekyll`（跳过 Jekyll 处理），无外部依赖。
+- 产品页（`product.html` / `product-en.html`）用于 Connect 的**营销网址**，内嵌 4 张商店截图
+  （`shots/zh-*.png` / `shots/en-*.png`，从主工程 `AppStore/Screenshots/` 拷贝）。
+- 页面自包含：`style.css`（深色模式自适应、图片自适应屏宽）+ `.nojekyll`（跳过 Jekyll 处理），
+  无外部依赖、无外部字体或脚本。
