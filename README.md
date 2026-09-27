@@ -13,7 +13,7 @@
 | English support | `https://caiyc-xd.github.io/ss-privacy/support-en.html` | English (U.S.) **Support URL** |
 | English privacy policy | `https://caiyc-xd.github.io/ss-privacy/privacy-en.html` | English (U.S.) **Privacy Policy URL** |
 
-联系方式：codelint@foxmail.com ｜ 政策生效日期：2026-09-25
+联系方式：caiyc_xd@126.com ｜ 政策生效日期：2026-09-25
 
 > **Pages 源分支是 `gh-pages`**（推送该分支时 GitHub 自动开启，实测四个页面均返回 200）。
 > 若想以后只维护一个分支，可在仓库 Settings → Pages 里把 Source 改成 `main` + `/ (root)`；
