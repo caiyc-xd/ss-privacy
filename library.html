@@ -114,6 +114,7 @@ function render(){
     const src = d.source_url || d.imslp || "";
     const srcCell = src ? `<a href="${esc(src)}" target="_blank" rel="noopener">源站 ↗</a>` : "—";
     const cat = (d.category||"").split(" ")[0];
+    const playUrl = "player.html?score=" + encodeURIComponent(d.path.replace(/\.(musicxml|xml)$/i, ".mxl"));
     tr.innerHTML =
       `<td>${i+1}</td>`+
       `<td>${esc(d.composer)}<div class="muted2">${esc(d.born)}–${esc(d.died)}</div></td>`+
@@ -123,7 +124,7 @@ function render(){
       `<td>${esc(d.nationality)}</td>`+
       `<td class="muted2">${esc(d.contributor||"—")}</td>`+
       `<td>${srcCell}</td>`+
-      `<td><a class="dl" href="${esc(dlUrl(d.path))}" download>↓ .mxl</a></td>`;
+      `<td><a class="dl" href="${esc(playUrl)}">试听</a> <a class="dl" href="${esc(dlUrl(d.path))}" download>↓ .mxl</a></td>`;
     tb.appendChild(tr);
   });
 }
