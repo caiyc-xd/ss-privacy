@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>曲谱试听 · 乐谱学伴儿 ScoreStudio</title>
+<meta name="description" content="在线渲染并试听公开版权（CC0）乐谱：MusicXML 五线谱 + 合成播放。">
+<link rel="stylesheet" href="style.css">
+<style>
+  .back { display:inline-block; margin:6px 0 4px; color:var(--accent); text-decoration:none; }
+  .meta { color:var(--muted); font-size:14px; margin:6px 0 14px; }
+  .meta a { color:var(--accent); }
+  .player-bar {
+    position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:12px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:10px 14px; margin:6px 0 16px; flex-wrap:wrap;
+  }
+  .pbtn {
+    font:inherit; cursor:pointer; border:1px solid var(--accent); color:var(--accent);
+    background:transparent; border-radius:9px; padding:7px 14px; min-width:96px;
+  }
+  .pbtn:hover { background:var(--accent); color:var(--bg); }
+  .ptime { font-variant-numeric:tabular-nums; color:var(--muted); font-size:13px; white-space:nowrap; }
+  .pwrap { flex:1 1 160px; height:8px; background:var(--line); border-radius:6px; overflow:hidden; min-width:120px; }
+  .pfill { height:100%; width:0%; background:var(--accent); transition:width .08s linear; }
+  #alphaTab { width:100%; overflow:auto; border:1px solid var(--line); border-radius:12px; padding:10px; background:var(--card); }
+  .status { color:var(--muted); font-size:14px; min-height:20px; margin-top:8px; }
+  .err { color:#c0392b; }
+  @media (prefers-color-scheme: dark){ #alphaTab { background:#fff; } #alphaTab { color:#16283c; } }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="index.html">乐谱学伴儿 <span>ScoreStudio</span></a>
+  <nav>
+    <a href="product.html">产品</a>
+    <a href="index.html">支持</a>
+    <a href="library.html">曲库</a>
+    <a href="privacy.html">隐私政策</a>
+    <a href="privacy-en.html">English</a>
+  </nav>
+</header>
+<main>
+<a class="back" href="library.html">← 返回曲库</a>
+<h1 id="title">曲谱试听</h1>
+<div class="meta" id="meta">正在载入…</div>
+
+<div class="player-bar">
+  <button class="pbtn" id="play">▶ 播放</button>
+  <button class="pbtn" id="stop">■ 停止</button>
+  <span class="ptime" id="time">0:00 / 0:00</span>
+  <div class="pwrap"><div class="pfill" id="fill"></div></div>
+</div>
+
+<div id="alphaTab"></div>
+<div class="status" id="status">初始化渲染引擎…</div>
+</main>
+<footer class="site">
+  <p>© 2026 乐谱学伴儿 · <a href="mailto:caiyc_xd@126.com">caiyc_xd@126.com</a></p>
+  <p class="muted">乐谱排版（engraving）按 CC0-1.0 献出；原作已过版权保护期。播放为合成示意，非录音。</p>
+</footer>
+
+<script src="player/alphaTab.min.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const status = $("#status");
+
+function fmt(ms){
+  if(ms==null || isNaN(ms)) return "0:00";
+  const s = Math.max(0, Math.floor(ms/1000));
+  return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+}
+function canon(p){ return (p||"").replace(/\.(musicxml|xml|mxl)$/i,""); }
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+// 读取 ?score= 参数（相对路径，UTF-8 编码）
+const params = new URLSearchParams(location.search);
+let scoreRel = params.get("score");
+if(!scoreRel){
+  status.innerHTML = '<span class="err">未指定曲谱。请回到<a href="library.html">曲库</a>选择「试听」。</span>';
+  $("#title").textContent = "未指定曲谱";
+  $("#meta").textContent = "";
+} else {
+  // 规范化扩展名为 .mxl（线上仅托管 .mxl）
+  const mxlRel = scoreRel.replace(/\.(musicxml|xml)$/i,".mxl");
+  loadScore(mxlRel);
+}
+
+async function loadScore(rel){
+  const api = new alphaTab.AlphaTabApi($("#alphaTab"), {
+    core: { engine: "svg" },
+    display: { layoutMode: "horizontal" },
+    player: { enablePlayer: true, soundFont: "player/sonivox.sf2", enableCursor: true }
+  });
+  window.__api = api;
+
+  // 事件绑定
+  api.playerStateChanged.on(function(state){
+    const Playing = (alphaTab.PlayerState && alphaTab.PlayerState.Playing) || 1;
+    const Paused  = (alphaTab.PlayerState && alphaTab.PlayerState.Paused)  || 2;
+    $("#play").textContent = (state===Playing) ? "⏸ 暂停" : "▶ 播放";
+  });
+  api.playerPositionChanged.on(function(pos){
+    const cur = pos ? pos.currentTime : 0, end = pos ? pos.endTime : 0;
+    $("#time").textContent = fmt(cur) + " / " + fmt(end);
+    if(end>0) $("#fill").style.width = (100*cur/end).toFixed(2) + "%";
+  });
+
+  $("#play").onclick = () => { try { api.playPause(); } catch(e){ status.innerHTML='<span class="err">播放失败：'+esc(e.message)+'</span>'; } };
+  $("#stop").onclick = () => { try { api.stop(); $("#fill").style.width="0%"; $("#time").textContent="0:00 / 0:00"; } catch(e){} };
+
+  try {
+    status.textContent = "正在下载乐谱…";
+    const buf = await fetch(rel).then(r=>{ if(!r.ok) throw new Error("HTTP "+r.status); return r.arrayBuffer(); });
+    status.textContent = "正在渲染…";
+    api.loadScoreFromBytes(new Uint8Array(buf));
+    status.textContent = "就绪。点击「播放」试听合成示意。";
+  } catch(e){
+    status.innerHTML = '<span class="err">载入失败：'+esc(e.message)+'</span>';
+    return;
+  }
+
+  // 从 catalog 取元数据（作曲家/贡献人/源）做署名
+  try {
+    const cat = await fetch("scores/catalog.json").then(r=>r.json());
+    const relKey = rel.replace(/^scores\//, "");
+    const piece = (cat.pieces||[]).find(p => canon(p.path)===canon(relKey));
+    if(piece){
+      $("#title").textContent = piece.title || rel;
+      const src = piece.source_url || piece.imslp || "";
+      const srcCell = src ? ' · <a href="'+esc(src)+'" target="_blank" rel="noopener">源站 ↗</a>' : "";
+      $("#meta").innerHTML =
+        esc(piece.composer) + (piece.born?(" ("+esc(piece.born)+"–"+esc(piece.died)+")"):"")
+        + ' · 贡献人：' + esc(piece.contributor||"—")
+        + srcCell;
+    }
+  } catch(e){ /* 元数据可选 */ }
+}
+</script>
+</body>
+</html>
