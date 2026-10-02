@@ -6,6 +6,9 @@
 > [openscores](https://github.com/caiyc-xd/openscores)（含在线试听、下载、alphaTab 引擎与开放字体 / 音色，
 > **不含任何打赏**）。本仓库现在只保留产品 / 支持 / 隐私信息与「支持与打赏」区块，并在页脚与导航中
 > 以友情链接指向 openscores。打赏信息仅存在于本仓库，公开曲库完全不涉及打赏。
+>
+> ⚠️ 本仓库的「支持与打赏」区块与 openscores 友情链接为**手工添加**：若日后由主工程 `build.py`
+> 重新生成，请同步把这两段内容加入主工程源（`AppStore/Privacy-Policy*.md` 或 `docs/`），以免被覆盖。
 
 ## 已在线（GitHub Pages）
 
