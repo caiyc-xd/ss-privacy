@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
 <title>曲谱试听 · 乐谱学伴儿 ScoreStudio</title>
 <meta name="description" content="在线渲染并试听公开版权（CC0）乐谱：MusicXML 五线谱 + 合成播放。">
 <link rel="stylesheet" href="style.css">
@@ -97,9 +98,10 @@ function loadScore(rel){
   });
   window.__api = api;
 
-  api.playerStateChanged.on(function(state){
+  api.playerStateChanged.on(function(args){
     const Playing = (alphaTab.PlayerState && alphaTab.PlayerState.Playing) || 1;
-    $("#play").textContent = (state===Playing) ? "⏸ 暂停" : "▶ 播放";
+    const st = (args && typeof args === "object") ? args.state : args;
+    $("#play").textContent = (st===Playing) ? "⏸ 暂停" : "▶ 播放";
   });
   api.playerPositionChanged.on(function(pos){
     const cur = pos ? pos.currentTime : 0, end = pos ? pos.endTime : 0;
@@ -107,6 +109,7 @@ function loadScore(rel){
     if(end>0) $("#fill").style.width = (100*cur/end).toFixed(2) + "%";
   });
   api.renderStarted.on(function(){ status.textContent = "正在渲染…"; });
+  api.renderFinished.on(function(){ status.textContent = "就绪。点击「播放」试听合成示意。"; });
   api.scoreLoaded.on(function(){ status.textContent = "就绪。点击「播放」试听合成示意。"; });
 
   $("#play").onclick = () => { try { api.playPause(); } catch(e){ status.innerHTML='<span class="err">播放失败：'+esc(e.message)+'</span>'; } };
