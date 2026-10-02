@@ -3,7 +3,7 @@
 乐谱学伴儿（ScoreStudio）iOS / iPadOS 应用的**隐私政策、支持与打赏页**，用于 App Store Connect。
 
 > **结构变更（2026-10）**：原仓库混入的渲染 / 播放与公开曲库内容已迁出至独立开源仓库
-> [openscores](https://github.com/caiyc-xd/openscores)（含在线试听、下载、alphaTab 引擎与开放字体 / 音色，
+> [openscores](https://caiyc-xd.github.io/openscores/)（含在线试听、下载、alphaTab 引擎与开放字体 / 音色，
 > **不含任何打赏**）。本仓库现在只保留产品 / 支持 / 隐私信息与「支持与打赏」区块，并在页脚与导航中
 > 以友情链接指向 openscores。打赏信息仅存在于本仓库，公开曲库完全不涉及打赏。
 >
