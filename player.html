@@ -76,15 +76,23 @@ function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;
 
 // 读取 ?score= 参数（相对路径，UTF-8 编码）
 const params = new URLSearchParams(location.search);
-let scoreRel = params.get("score");
-if(!scoreRel){
-  status.innerHTML = '<span class="err">未指定曲谱。请回到<a href="library.html">曲库</a>选择「试听」。</span>';
-  $("#title").textContent = "未指定曲谱";
+if(location.protocol === "file:"){
+  status.innerHTML = '<span class="err">检测到以 <b>file://</b> 方式打开：浏览器会禁止读取本地乐谱文件，因此会一直“正在载入”。'
+    + '请改用本地服务器地址：<br><code>http://localhost:8080/player.html?score=…</code><br>'
+    + '（本机已执行 <code>python3 -m http.server 8080</code>，保持该终端运行即可。）</span>';
+  $("#title").textContent = "请用本地服务器打开";
   $("#meta").textContent = "";
 } else {
-  // 规范化扩展名为 .mxl（线上仅托管 .mxl）
-  const mxlRel = scoreRel.replace(/\.(musicxml|xml)$/i,".mxl");
-  loadScore(mxlRel);
+  let scoreRel = params.get("score");
+  if(!scoreRel){
+    status.innerHTML = '<span class="err">未指定曲谱。请回到<a href="library.html">曲库</a>选择「试听」。</span>';
+    $("#title").textContent = "未指定曲谱";
+    $("#meta").textContent = "";
+  } else {
+    // 规范化扩展名为 .mxl（线上仅托管 .mxl）
+    const mxlRel = scoreRel.replace(/\.(musicxml|xml)$/i,".mxl");
+    loadScore(mxlRel);
+  }
 }
 
 function loadScore(rel){
@@ -97,6 +105,10 @@ function loadScore(rel){
     player: { enablePlayer: true, soundFont: "player/sonivox.sf2", enableCursor: true }
   });
   window.__api = api;
+
+  api.error.on(function(e){
+    status.innerHTML = '<span class="err">载入错误：'+esc((e&&e.message)||e||"未知错误")+'</span>';
+  });
 
   api.playerStateChanged.on(function(args){
     const Playing = (alphaTab.PlayerState && alphaTab.PlayerState.Playing) || 1;
@@ -129,6 +141,14 @@ function loadScore(rel){
         + srcCell;
     }
   }).catch(()=>{});
+
+  // 看门狗：若 12 秒仍未就绪，给出排查指引（避免一直“哑等”）
+  setTimeout(function(){
+    if(/正在载入|正在渲染/.test(status.textContent)){
+      status.innerHTML = '<span class="err">加载超时（12s）。若已通过 http:// 访问：按 F12 打开控制台，把红色报错截图发我；'
+        + '常见原因：乐谱路径 404，或 Bravura 字体未加载（需 player/font/ 目录）。</span>';
+    }
+  }, 12000);
 }
 </script>
 </body>
