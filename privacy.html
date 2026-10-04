@@ -62,7 +62,11 @@
 <h2>七、随包分发的第三方内容与许可</h2>
 <p>本应用随包分发以下资源（均<strong>不涉及</strong>联网请求或数据收集）：</p>
 <ul>
-<li><strong>FluidR3 GM</strong> 音色库 —— MIT 许可，许可文本随包分发；</li>
+<li><strong>FluidR3Mono GM</strong> 音色库（压缩 <code>.sf3</code>，13.9 MB）—— MIT 许可，许可文本随包分发；</li>
+</ul>
+<p>  首次启动时由随包的 <strong>stb_vorbis</strong>（公有领域 / MIT 双许可，许可文本随包）在<strong>本机</strong>解码成</p>
+<p>  sf2 并缓存，全程不联网；</p>
+<ul>
 <li><strong>Bravura</strong> 乐谱字体 —— SIL Open Font License 1.1，许可文本随包分发；</li>
 <li>两份练习范例（G 大调音阶与终止式、a 和声小调音阶与终止式）—— 通用音阶与终止式音型，</li>
 </ul>
@@ -70,6 +74,8 @@
 <h2>八、第三方 SDK、广告与内购</h2>
 <p>本应用不包含任何第三方 SDK：没有广告、没有分析统计、没有崩溃上报、没有社交登录，</p>
 <p>也没有内购与订阅。应用完全依靠系统框架与随包资源运行。</p>
+<p>（随包的 <code>stb_vorbis</code> 是<strong>源码形式</strong>的音色库解码器，不是 SDK：不联网、不采集、不埋点，</p>
+<p>只把压缩音色库解成标准 sf2。）</p>
 <h2>九、儿童隐私</h2>
 <p>由于本应用不收集任何数据，因此<strong>不会收集儿童（包括 13 岁以下儿童）的个人信息</strong>，</p>
 <p>也无需家长同意流程。家长可以放心让孩子使用。</p>
