@@ -11,7 +11,9 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7fafd">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1720">
 <link rel="canonical" href="https://caiyc-xd.github.io/ss-privacy/">
+<link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/">
 <link rel="alternate" hreflang="en" href="https://caiyc-xd.github.io/ss-privacy/support-en.html">
+<link rel="alternate" hreflang="x-default" href="https://caiyc-xd.github.io/ss-privacy/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="乐谱学伴儿 ScoreStudio">
 <meta property="og:title" content="乐谱学伴儿 ScoreStudio">
@@ -24,20 +26,70 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "zh-CN",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "导入 PDF 后时值不准？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "矢量 PDF 直读是实验性功能：谱表、音高与小节能准确还原，时值仍为近似值，导入后请核对。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "能编辑乐谱吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "本应用是只读的：用于看谱、听谱与练习，不提供改谱功能（详情面板里能改的只有演奏设置：乐器音色、音量 / 混响 / 声像、静音、转调、连谱号与谱表类型）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "和弦符号（字母和弦）为什么也会响？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "谱面写了和弦符号，就会按谱面垫底演奏（用来对和弦、练伴奏）。可在播放设置里关掉「字母和弦发声」，也能用滑杆单独调它的音量。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "没有声音？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "播放使用应用内置的音色库（随包分发，无需下载）；若仍无声，请检查设备音量与静音开关。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "支持哪些格式？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MusicXML（.xml / .musicxml）、压缩 MusicXML（.mxl）与矢量 PDF。本版本不含图像识别（OMR），也不支持 MIDI 导入。"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">跳到主要内容</a>
 <header class="site">
   <a class="brand" href="index.html">乐谱学伴儿 <span>ScoreStudio</span></a>
-  <nav>
+  <nav aria-label="主导航">
     <a href="product.html">产品</a>
     <a href="index.html">支持</a>
     <a href="history.html">版本历史</a>
     <a href="privacy.html">隐私政策</a>
     <a href="https://caiyc-xd.github.io/openscores/" rel="noopener">公开曲库</a>
-    <a href="privacy-en.html">English</a>
+    <a href="support-en.html" hreflang="en" lang="en">English</a>
   </nav>
 </header>
-<main>
+<main id="main">
 <h1>乐谱学伴儿 ScoreStudio</h1>
 <p class="lead">看谱 · 听谱 · 练琴 —— 一款完全离线的乐谱应用，为 iPhone 与 iPad 设计。</p>
 <div class="card">

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caiyc-xd.github.io/ss-privacy/sitemap.xml
