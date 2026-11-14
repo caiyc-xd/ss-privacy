@@ -11,9 +11,8 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7fafd">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1720">
 <link rel="canonical" href="https://caiyc-xd.github.io/ss-privacy/history.html">
-<link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/history.html">
 <link rel="alternate" hreflang="en" href="https://caiyc-xd.github.io/ss-privacy/history-en.html">
-<link rel="alternate" hreflang="x-default" href="https://caiyc-xd.github.io/ss-privacy/history.html">
+<link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/history.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="乐谱学伴儿 ScoreStudio">
 <meta property="og:title" content="版本历史 · 乐谱学伴儿">
@@ -28,21 +27,58 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<a class="skip" href="#main">跳到主要内容</a>
 <header class="site">
   <a class="brand" href="index.html">乐谱学伴儿 <span>ScoreStudio</span></a>
-  <nav aria-label="主导航">
+  <nav>
     <a href="product.html">产品</a>
     <a href="index.html">支持</a>
     <a href="history.html">版本历史</a>
     <a href="privacy.html">隐私政策</a>
     <a href="https://caiyc-xd.github.io/openscores/" rel="noopener">公开曲库</a>
-    <a href="history-en.html" hreflang="en" lang="en">English</a>
+    <a href="history-en.html">English</a>
   </nav>
 </header>
-<main id="main">
-<p class="muted">跳到：<a href="#v1-1">1.1</a> · <a href="#v1-0">1.0</a></p>
+<main>
+<p class="muted">跳到：<a href="#v1-2">1.2</a> · <a href="#v1-1">1.1</a> · <a href="#v1-0">1.0</a></p>
 <h1>版本历史</h1>
+<h2 id="v1-2">1.2（build 2）</h2>
+<h3>新功能</h3>
+<ul>
+<li><strong>跨谱表琶音（重点）</strong>：钢琴、竖琴这类&quot;上下两行&quot;的乐器，两行共用一个琶音的写法， 现在显示成<strong>一条贯穿两行的波浪线</strong>（原来上下各画半段、互不相连）； 向下的跨谱表琶音、同一拍各自独立的两个琶音、以及&quot;不要琶音&quot;的括号也一并修好</li>
+<li><strong>打开与互转乐谱文件</strong>：支持打开 <code>.mscz</code> / <code>.mscx</code> 乐谱文件，并可在两种格式之间互相转换（压缩包 ↔ 纯文本）</li>
+<li><strong>琶音可以滚奏，速度也能调</strong>：跨谱表琶音现在<strong>默认按滚奏演奏</strong> —— 从最低音依次奏到最高音， 起音有先后、<strong>收停同时</strong>（钢琴卷帘上是一个直角梯形，任何音都不会拖进下一小节）； 设置 ▸ 琶音里可以关掉，速度分<strong>慢 / 中 / 快 / 自定义</strong>四档， 自定义可填每音间隔 0.01–2.0 拍。八音大和弦不再挤成&quot;四个在滚 + 一个和弦&quot;； 钢琴卷帘里看到的阶梯与听到的完全一致</li>
+<li><strong>调性看得见</strong>：主界面标题下新增「调性 C 大调」一行；谱中换过调号时注明「（共 N 处调号）」； 练习曲现在写明调式，小调不再显示成「C 大调 / a 小调（调式未标注）」</li>
+<li><strong>速度记号面板</strong>：一份谱有多条速度记号时，速度行右侧出现入口 —— 列出全部记号 （小节 / 声部 / BPM / 基准），可逐条滑动改、按比例 50%–200% 应用到全部、统一设为 N BPM、删除单条</li>
+<li><strong>跨谱表琶音示例谱</strong>：内置范例新增《跨谱表琶音》——十二小节、单声部两谱表，像电子琴那样 <strong>中途换音色</strong>：竖琴（1–4 小节）→ 钢琴（5–8 小节，带延音踏板）→ 钢片琴（9–12 小节）； 每次换音色在谱面写一行音色文字，C 大调 I–vi–ii–V 的和声走句配 p / mf / f 力度， 琶音上行与下行混排，起句小节末拍加两个八分音符带动进行，收尾和弦向下滚奏并带延长记号。 选中任意音后可在「音符详情 ▸ 音乐课堂」逐条看讲解</li>
+<li><strong>音乐课堂</strong>：「琶音 / 滑音」分类下新增「跨谱表琶音」与「非琶音括号」两条</li>
+<li><strong>音乐课堂补全「弯音」</strong>：新增「弯音（滑入 / 滑出 / 推弦）」一类 —— 舀音、轻落音、坠音、 上划出与推弦（含先推后弹 / 推后放回 / 摇把）逐条讲清方向与听感； 并补齐此前没讲的记号：颤音前置音与延长线、装饰音的专属形式（海顿 / 颤波 / Schleifer…）、 拨奏 / 闷音 / 空弦 / 响指拨弦 / 点弦 / 脚跟脚尖、人工泛音与泛音基础音、 先渐强后渐弱（梭形）与文字式渐强渐弱、选择延音踏板与半踏板、提示音（不发声）与鼓音</li>
+</ul>
+<h3>排版与记号</h3>
+<ul>
+<li>琶音线改到符头<strong>左侧</strong>（原来压在符头上，全音符和弦时几乎看不清）</li>
+<li>修掉&quot;同一行里多个小节都有琶音时，只有第一条画得出来&quot;的问题</li>
+<li><strong>谱表放大到 100% 以上时，横向间距跟着放大</strong>（以前只放大字形，符头会与临时记号、 同和弦的音互相压住；100% 时的版面与 1.1 逐像素一致）</li>
+<li>小节开头的倚音放不下时，让位改为<strong>向前渐消</strong>，末拍不再被顶出小节线</li>
+<li>多声部休止符<strong>水平避让</strong>：同拍上别的声部有实音时，休止符不再压在人家符头上</li>
+</ul>
+<h3>播放与弯音</h3>
+<ul>
+<li><strong>所有弯音类记号都会发声</strong>：坠音、舀音、轻落音、上划出 / 下滑出 （<code>&lt;falloff/&gt;</code> / <code>&lt;scoop/&gt;</code> / <code>&lt;plop/&gt;</code> / <code>&lt;doit/&gt;</code> 以及 <code>&lt;slide&gt;</code> 写法）与<strong>吉他推弦</strong> （含先推后弹、推后放回）都按谱面演奏；<strong>落在延音线收束端的记号同样生效</strong> —— 此前《自由》m63 / m65 / m67 三处坠音谱面上有、播放里一声不响</li>
+<li><strong>打击乐混排</strong>：5 线鼓谱混在旋律声部里时，鼓音单独走鼓通道发声（设置里可关）， 不再被当成旋律音弹出来；单线鼓谱以外的鼓谱按实际线数绘制</li>
+<li><strong>播放口径按实测校准</strong>：倚音、装饰音、滑音、琶音与打击乐的起音位置、 时值与通道逐项对拍（同一份谱导出的 MIDI 事件位置与数量符合预期）</li>
+</ul>
+<h3>兼容与导出</h3>
+<ul>
+<li><strong>导入版式逐项校准</strong>：多谱表各自的中途换谱号、八度记号按谱表跨小节持续、 符杠切组（<code>&lt;beam&gt;</code> 组结束后的音不再被卷进上一组）</li>
+<li>八度记号跨行：行末不再画直角钩、续行重新写出「8」，只在整段真正的终点收口</li>
+<li>导出端改用规范元素（颤音修饰、微音提示），避免非标准写法在部分制谱软件中引发异常</li>
+</ul>
+<h3>问题修复</h3>
+<ul>
+<li><strong>导入 .mscz 更稳</strong>：打击乐段的谱号正确画成双竖线（此前误画成高音谱号）； 换回有调号乐器时补画调号；原生弦位记录不再显示成符头旁的小数字</li>
+<li><strong>八度记号往返保真</strong>：导出 .mscz 后再打开，八度区间覆盖的音符范围不变</li>
+<li><strong>重新打开与乐谱库</strong>：上次打开的是 .mscz 时不再报文件类型错误； 从乐谱库点选乐谱后直接显示谱面（此前仍停留在文件名列表）</li>
+</ul>
 <h2 id="v1-1">1.1（首次更新 · build 1）</h2>
 <h3>新功能</h3>
 <ul>
