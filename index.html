@@ -11,9 +11,8 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7fafd">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f1720">
 <link rel="canonical" href="https://caiyc-xd.github.io/ss-privacy/">
-<link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/">
 <link rel="alternate" hreflang="en" href="https://caiyc-xd.github.io/ss-privacy/support-en.html">
-<link rel="alternate" hreflang="x-default" href="https://caiyc-xd.github.io/ss-privacy/">
+<link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="乐谱学伴儿 ScoreStudio">
 <meta property="og:title" content="乐谱学伴儿 ScoreStudio">
@@ -26,70 +25,20 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "inLanguage": "zh-CN",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "导入 PDF 后时值不准？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "矢量 PDF 直读是实验性功能：谱表、音高与小节能准确还原，时值仍为近似值，导入后请核对。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "能编辑乐谱吗？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "本应用是只读的：用于看谱、听谱与练习，不提供改谱功能（详情面板里能改的只有演奏设置：乐器音色、音量 / 混响 / 声像、静音、转调、连谱号与谱表类型）。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "和弦符号（字母和弦）为什么也会响？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "谱面写了和弦符号，就会按谱面垫底演奏（用来对和弦、练伴奏）。可在播放设置里关掉「字母和弦发声」，也能用滑杆单独调它的音量。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "没有声音？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "播放使用应用内置的音色库（随包分发，无需下载）；若仍无声，请检查设备音量与静音开关。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "支持哪些格式？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "MusicXML（.xml / .musicxml）、压缩 MusicXML（.mxl）与矢量 PDF。本版本不含图像识别（OMR），也不支持 MIDI 导入。"
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
-<a class="skip" href="#main">跳到主要内容</a>
 <header class="site">
   <a class="brand" href="index.html">乐谱学伴儿 <span>ScoreStudio</span></a>
-  <nav aria-label="主导航">
+  <nav>
     <a href="product.html">产品</a>
     <a href="index.html">支持</a>
     <a href="history.html">版本历史</a>
     <a href="privacy.html">隐私政策</a>
     <a href="https://caiyc-xd.github.io/openscores/" rel="noopener">公开曲库</a>
-    <a href="support-en.html" hreflang="en" lang="en">English</a>
+    <a href="support-en.html">English</a>
   </nav>
 </header>
-<main id="main">
+<main>
 <h1>乐谱学伴儿 ScoreStudio</h1>
 <p class="lead">看谱 · 听谱 · 练琴 —— 一款完全离线的乐谱应用，为 iPhone 与 iPad 设计。</p>
 <div class="card">
@@ -108,6 +57,11 @@
 <li>练习：C / F / G 三个调（各含关系小调）的音阶与琶音、和弦练习（上下行、1–3 个八度、可带终止式 —— 终止式与回主音的连线按考级教材写法），另有节拍器、变速、循环、摇摆与钢琴卷帘</li>
 <li>内置范例：随包示例曲《示例进行曲》，外加两份练习原谱 —— G 大调（3 个八度）与 a 和声小调（2 个八度），含终止式，以原始 MusicXML 文件随包分发</li>
 <li>导出：PDF / PNG / MIDI / WAV / MusicXML，统一经系统分享面板保存或发送</li>
+<li>调性看得见：主界面标题下直接写明「调性 C 大调」，谱中换过调号会注明处数；练习曲写明调式</li>
+<li>速度快调：一份谱有多条速度记号时，可逐条改、按比例 50%–200% 应用到全部、统一设为某个 BPM 或删掉某一条</li>
+<li>跨谱表琶音：钢琴 / 竖琴上下两行共用的琶音画成一条贯穿的波浪线；可选「滚奏」播放，速度分慢 / 中 / 快 / 自定义四档</li>
+<li>弯音都听得见：坠音、舀音、轻落音、上划出 / 下滑出与吉他推弦（含先推后弹、推后放回）都按谱面演奏，挂在延音线末端的记号同样生效</li>
+<li>版式与播放逐项校准：多谱表中途换谱号、八度记号按谱表持续、多声部休止符避让、5 线鼓谱与混排鼓音、符杠切组</li>
 <li>中英文界面，完全离线</li>
 </ul>
 <h2>支持</h2>
@@ -127,6 +81,14 @@
 <li>打赏<strong>纯属自愿</strong>：不构成购买，不解锁任何功能，也不附带任何回报或服务承诺。</li>
 <li>本应用<strong>没有付费内容 / 订阅 / 内购 / 广告</strong>，应用内也<strong>不出现任何打赏入口</strong>。</li>
 </ul>
+<h2>致谢</h2>
+<ul>
+<li><strong>Bravura</strong> 乐谱字体 —— Steinberg 发布，SIL Open Font License 1.1</li>
+<li><strong>FluidR3Mono GM</strong> 音色库 —— © 2000–2002, 2008 Frank Wen，MIT 许可</li>
+<li><strong>stb_vorbis</strong>（音色库解码）—— 公有领域 / MIT 双许可</li>
+<li><strong>openscores 公开领域曲库</strong> —— 友情链接项目；随包示例曲与练习谱为本工程原创</li>
+</ul>
+<p>完整许可文本随 App 一同分发，应用内可在「设置 ▸ 链接与致谢」查看。</p>
 <h2>友情链接</h2>
 <ul>
 <li><a href="https://caiyc-xd.github.io/openscores/">openscores · 公开领域乐谱库</a> —— 我们维护的完全公开、<strong>不含任何打赏</strong>、可自由取用的公共领域曲库（200 余首，含在线试听与下载；乐谱按 CC0-1.0 献出，代码 MIT）。</li>

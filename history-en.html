@@ -13,7 +13,6 @@
 <link rel="canonical" href="https://caiyc-xd.github.io/ss-privacy/history-en.html">
 <link rel="alternate" hreflang="zh-CN" href="https://caiyc-xd.github.io/ss-privacy/history.html">
 <link rel="alternate" hreflang="en" href="https://caiyc-xd.github.io/ss-privacy/history-en.html">
-<link rel="alternate" hreflang="x-default" href="https://caiyc-xd.github.io/ss-privacy/history.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="乐谱学伴儿 ScoreStudio">
 <meta property="og:title" content="Version history · ScoreStudio">
@@ -28,21 +27,58 @@
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-<a class="skip" href="#main">Skip to main content</a>
 <header class="site">
   <a class="brand" href="support-en.html">ScoreStudio</a>
-  <nav aria-label="Main navigation">
+  <nav>
     <a href="product-en.html">Product</a>
     <a href="support-en.html">Support</a>
     <a href="history-en.html">Version history</a>
     <a href="privacy-en.html">Privacy</a>
     <a href="https://caiyc-xd.github.io/openscores/" rel="noopener">Open scores</a>
-    <a href="history.html" hreflang="zh-CN" lang="zh-CN">中文</a>
+    <a href="history.html">中文</a>
   </nav>
 </header>
-<main id="main">
-<p class="muted">Jump to:<a href="#v1-1">1.1</a> · <a href="#v1-0">1.0</a></p>
+<main>
+<p class="muted">Jump to:<a href="#v1-2">1.2</a> · <a href="#v1-1">1.1</a> · <a href="#v1-0">1.0</a></p>
 <h1>Version history</h1>
+<h2 id="v1-2">1.2 (build 2)</h2>
+<h3>New features</h3>
+<ul>
+<li><strong>Cross-staff arpeggios (highlight)</strong>: on instruments with two staves — piano, harp — an arpeggio shared by both hands is now drawn as <strong>one wavy line spanning both staves</strong> (it used to be two disconnected halves). Downward cross-staff arpeggios, two independent arpeggios on the same beat, and the &quot;do not roll&quot; bracket are fixed as well</li>
+<li><strong>Open and convert score files</strong>: open <code>.mscz</code> / <code>.mscx</code> scores, and convert between the two formats (compressed package ↔ plain text)</li>
+<li><strong>Arpeggios roll by default — with adjustable speed</strong>: a cross-staff arpeggio now plays from the lowest note up to the highest with <strong>staggered starts and a common release</strong> — in the piano roll it is a right trapezoid, and no note spills into the next measure. It can be switched off under Settings ▸ Arpeggio, and the speed comes in <strong>slow / medium / fast / custom</strong> tiers — custom takes a gap of 0.01–2.0 beats per note. An eight-note chord no longer collapses into &quot;four rolling + one chord&quot;, and the piano roll shows exactly what you hear</li>
+<li><strong>Key signature at a glance</strong>: a new &quot;Key C major&quot; line under the title; when the score changes key it also notes &quot;(N key changes)&quot;; generated practice scores now state their mode, so minor no longer shows up as &quot;C major / A minor (mode not specified)&quot;</li>
+<li><strong>Tempo-mark panel</strong>: when a score has several tempo marks, an entry appears next to the tempo row — it lists every mark (measure / part / BPM / base) and lets you drag each one, scale all by 50%–200%, set all to N BPM, or delete a mark</li>
+<li><strong>Cross-staff arpeggio example</strong>: a new built-in example, *Cross-Staff Arpeggio* — twelve measures on a single part with two staves, changing instrument mid-score the way an arranger keyboard does: harp (1–4) → piano with sustain pedal (5–8) → celesta (9–12). Every change is announced by a bold instrument label on the score, over a I–vi–ii–V progression in C major with p / mf / f dynamics; rolls run up and down, phrase-ending measures pick up with two eighth notes, and the closing chord rolls downward under a fermata. Tap any note and read the walkthrough under Note details ▸ Music classroom</li>
+<li><strong>Music classroom</strong>: two new entries under Arpeggio / Glissando — &quot;Cross-staff arpeggio&quot; and &quot;Non-arpeggiate&quot;</li>
+<li><strong>Music classroom now covers bends</strong>: a new <strong>Bends</strong> group explains scoops, plops, falls, doits and guitar bends (pre-bend, release and whammy-bar variants), each with its direction and how it sounds. Marks that had no explanation before are filled in as well: trill prefixes and extension lines, the dedicated ornament forms (Haydn, tremblement, Schleifer…), pizzicato / stopped / open string / snap pizzicato / tap / heel-toe, artificial harmonics and harmonic base pitches, swells and written cresc./dim., sostenuto and half pedals, cue notes (silent) and drum notes</li>
+</ul>
+<h3>Engraving</h3>
+<ul>
+<li>Arpeggio lines moved to the <strong>left</strong> of the noteheads (they used to sit on top of them and were nearly invisible on whole-note chords)</li>
+<li>Fixed &quot;only the first arpeggio is drawn when several measures in a line have arpeggios&quot;</li>
+<li><strong>Staff sizes above 100% now scale horizontal spacing too</strong> (previously only the glyphs grew, so noteheads collided with accidentals and with other notes of the same chord; layout at 100% is pixel-identical to 1.1)</li>
+<li>When a grace group at the start of a measure doesn&#x27;t fit, the shift now <strong>fades forward</strong>, so the last beat is no longer pushed past the barline</li>
+<li><strong>Multi-voice rests now step aside horizontally</strong>: a rest no longer sits on top of another voice&#x27;s notehead on the same beat</li>
+</ul>
+<h3>Playback and bends</h3>
+<ul>
+<li><strong>Every bend notation now sounds</strong>: falls, scoops, plops, doits (<code>&lt;falloff/&gt;</code>, <code>&lt;scoop/&gt;</code>, <code>&lt;plop/&gt;</code>, <code>&lt;doit/&gt;</code> and the <code>&lt;slide&gt;</code> spelling) and <strong>guitar bends</strong> (pre-bend and release included) are performed as written. A mark on the <strong>end of a tied note</strong> works too — three falls in *Liberty* (m63 / m65 / m67) were printed but silent before this version</li>
+<li><strong>Mixed percussion</strong>: drum notes inside a melodic part now go to the drum channel (switchable in Settings) instead of being played as melody notes; drum staves with more than one line are drawn with their real line count</li>
+<li><strong>Playback calibration</strong>: grace notes, ornaments, glissandi, arpeggios and percussion were verified note by note — the same score exports MIDI events at the intended positions and in the expected numbers</li>
+</ul>
+<h3>Compatibility and export</h3>
+<ul>
+<li><strong>Import and engraving calibration</strong>: per-staff clef changes inside a multi-staff part, octave lines that persist per staff across measures, and beam grouping (a note after a <code>&lt;beam&gt;</code> group&#x27;s end is no longer swallowed by the previous group)</li>
+<li>Octave lines across system breaks: no hook at the end of a line, the &quot;8&quot; is redrawn on the continuation line, and the right-angle hook appears only at the true end of the run</li>
+<li>Export now uses standard elements (trill modifiers and microtone hints), avoiding non-standard constructs that some notation apps cannot open</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li><strong>More reliable .mscz import</strong>: percussion sections now show the percussion clef (two bars) instead of a treble clef; key signatures are redrawn when an instrument with a key signature returns; native string/fret data no longer shows up as tiny numbers beside noteheads</li>
+<li><strong>Octave lines survive an export round trip</strong>: exporting to .mscz and reopening no longer changes which notes an octave line covers</li>
+<li><strong>Reopen and score library</strong>: reopening the last .mscz no longer reports a file-type error, and picking a score in the library now shows the score instead of staying on the list</li>
+</ul>
 <h2 id="v1-1">1.1 (first update · build 1)</h2>
 <h3>New features</h3>
 <ul>
